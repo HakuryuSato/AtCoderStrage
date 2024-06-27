@@ -1,4 +1,1 @@
-3 5
-oooxx
-xooox
-xxooo
+1
