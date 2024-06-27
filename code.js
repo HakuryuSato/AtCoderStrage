@@ -1,7 +1,7 @@
 const readline = require('readline');
 const fs = require('fs');
 const rl = readline.createInterface({
-    input: fs.createReadStream('input0.txt'),
+    input: fs.createReadStream('input1.txt'),
     output: process.stdout
 });
 
@@ -20,8 +20,7 @@ const rl = readline.createInterface({
 let lineCount = 0;
 let lines = []
 rl.on('line', (line) => {
-    text=line
-
+    N = Number(line)
 
 
     lineCount++;
@@ -29,34 +28,54 @@ rl.on('line', (line) => {
     main();
 });
 
+function isNZero(N) {
+    return N === 0
+}
 
-function convertTextBasedOnCase(text) {
-    let upperCount = 0;
-    let lowerCount = 0;
+function createCarpet() {
+    return ["###", "#.#", "###"]
+}
 
-    for (let char of text) {
-        if (char === char.toUpperCase() && char !== char.toLowerCase()) {
-            upperCount++;
-        } else if (char === char.toLowerCase() && char !== char.toUpperCase()) {
-            lowerCount++;
+function outPutCarpet(carpet) {
+    for (let subCarpet of carpet) {
+        for (let row of subCarpet) {
+            console.log(row);
         }
-    }
-
-    if (upperCount > lowerCount) {
-        return text.toUpperCase();
-    } else {
-        return text.toLowerCase();
     }
 }
 
 
 
 function main() {
-    // console.log(text)
+    // console.log(N)
+    if (isNZero(N)) { // レベル0なら1x1マス
+        console.log('#')
+    } else {
+        allCarpet = []
 
 
-    result = convertTextBasedOnCase(text)
-    console.log(result)
-    
+        loop = 3 ** N // ループ数
+        centerNumber = Math.floor(loop / 2) // 中央
+        for (i = 1; i <= loop; i++) { //　カーペットレベル分ループ
+
+
+            if (i % 3 === 0) { // もし3の倍数なら
+                // 次の配列に入れる
+                outPutCarpet(allCarpet)
+            } else {
+
+            }
+            // console.log(i)
+
+
+
+
+        }
+
+
+
+
+    }
+
 
 }
