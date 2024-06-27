@@ -18,9 +18,8 @@ const rl = readline.createInterface({
 
 
 let lineCount = 0;
+let lines = []
 rl.on('line', (line) => {
-    // console.log(line)
-
 
 
 
@@ -31,7 +30,6 @@ rl.on('line', (line) => {
 
 
 function main() {
-    console.log("a")
 
 
     

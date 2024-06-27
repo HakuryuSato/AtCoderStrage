@@ -1,32 +1,26 @@
-// const readline = require('readline');
-// const fs = require('fs');
-// const rl = readline.createInterface({
-//     input: fs.createReadStream('input2.txt'),
-//     output: process.stdout
-// });
-
-
-
-// 本番用*************************************************************************
 const readline = require('readline');
+const fs = require('fs');
 const rl = readline.createInterface({
-    input: process.stdin, 
+    input: fs.createReadStream('input0.txt'),
     output: process.stdout
-}); 
-// 本番用*************************************************************************
+});
+
+
+
+// // 本番用*************************************************************************
+// const readline = require('readline');
+// const rl = readline.createInterface({
+//     input: process.stdin, 
+//     output: process.stdout
+// }); 
+// // 本番用*************************************************************************
 
 
 
 let lineCount = 0;
 let lines = []
 rl.on('line', (line) => {
-    // console.log(line)
-
-    if (lineCount == 0) {
-        [N, M] = line.split(" ").map(Number);
-    } else {
-        lines = (line.split(" ").map(Number));
-    }
+    text=line
 
 
 
@@ -36,25 +30,33 @@ rl.on('line', (line) => {
 });
 
 
-function main() {
-    // console.log(N, M, lines)
+function convertTextBasedOnCase(text) {
+    let upperCount = 0;
+    let lowerCount = 0;
 
-    ailianCount = 0
-
-    for (i = 0; i < N; i++) {
-        M = M - lines[i]
-        // console.log(M, lines[i])
-
-        if (M < 0) {
-            break
-        } else {
-            ailianCount++
+    for (let char of text) {
+        if (char === char.toUpperCase() && char !== char.toLowerCase()) {
+            upperCount++;
+        } else if (char === char.toLowerCase() && char !== char.toUpperCase()) {
+            lowerCount++;
         }
     }
 
-    console.log(ailianCount)
+    if (upperCount > lowerCount) {
+        return text.toUpperCase();
+    } else {
+        return text.toLowerCase();
+    }
+}
 
 
 
+function main() {
+    // console.log(text)
+
+
+    result = convertTextBasedOnCase(text)
+    console.log(result)
+    
 
 }
