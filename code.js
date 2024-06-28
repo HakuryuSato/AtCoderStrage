@@ -1,7 +1,7 @@
 // const readline = require('readline');
 // const fs = require('fs');
 // const rl = readline.createInterface({
-//     input: fs.createReadStream('input0.txt'),
+//     input: fs.createReadStream('input1.txt'),
 //     output: process.stdout
 // });
 
@@ -21,7 +21,14 @@ let lineCount = 0;
 let lines = []
 rl.on('line', (line) => {
 
-        [N, L, R] = line.split(' ').map(Number);
+
+    if(lineCount === 0){
+        [N,M] = line.split(' ').map(Number);
+    }else if(lineCount === 1){
+        A=line.split(' ').map(Number);
+    }else{
+        lines.push(line.split(' ').map(Number));   
+    }
 
 
 
@@ -32,26 +39,32 @@ rl.on('line', (line) => {
 });
 
 
-function reverseSubArray(arr, start, end) {
-    let subArray = arr.slice(start, end + 1).reverse();
-    
-    return [...arr.slice(0, start), ...subArray, ...arr.slice(end + 1)];
+function sumColumnsReduce(arr) {
+    return arr[0].map((_, colIndex) => // 列を指定
+      arr.reduce((sum, row) => sum + row[colIndex], 0)
+    );
   }
 
-function createList(N){
-    return Array.from({ length: N }, (v, i) => i + 1);
-}
 
 function main() {
-
-
-    list=createList(N);
-
+    // console.log(N,M,A,lines);
+    sumArray = sumColumnsReduce(lines);
+    // console.log(sumArray);
     
-    result=reverseSubArray(list, L-1, R-1);
-    text = result.join(' ')
+    calculated=A.map((val,index)=>{
+        if(val <= sumArray[index]){
+            return true
+        }else{
+            return false
+        }
+    });
 
-    console.log(text)
+    result=calculated.every(val => val === true)
+    if(result){
+        console.log("Yes")
+    }else{
+        console.log("No")
+    }
     
 
 }
