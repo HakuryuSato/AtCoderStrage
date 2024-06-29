@@ -1,7 +1,7 @@
 // const readline = require('readline');
 // const fs = require('fs');
 // const rl = readline.createInterface({
-//     input: fs.createReadStream('input1.txt'),
+//     input: fs.createReadStream('input2.txt'),
 //     output: process.stdout
 // });
 
@@ -21,17 +21,7 @@ let lineCount = 0;
 let lines = []
 rl.on('line', (line) => {
 
-
-    if(lineCount === 0){
-        [N,M] = line.split(' ').map(Number);
-    }else if(lineCount === 1){
-        A=line.split(' ').map(Number);
-    }else{
-        lines.push(line.split(' ').map(Number));   
-    }
-
-
-
+    [a,b] = line.split(' ').map(Number);
 
     lineCount++;
 }).on('close', () => {
@@ -39,32 +29,15 @@ rl.on('line', (line) => {
 });
 
 
-function sumColumnsReduce(arr) {
-    return arr[0].map((_, colIndex) => // 列を指定
-      arr.reduce((sum, row) => sum + row[colIndex], 0)
-    );
-  }
-
-
 function main() {
-    // console.log(N,M,A,lines);
-    sumArray = sumColumnsReduce(lines);
-    // console.log(sumArray);
-    
-    calculated=A.map((val,index)=>{
-        if(val <= sumArray[index]){
-            return true
-        }else{
-            return false
-        }
-    });
-
-    result=calculated.every(val => val === true)
-    if(result){
-        console.log("Yes")
+    // console.log(num)
+    result=0
+    if(a===b){
+        result =  -1
     }else{
-        console.log("No")
+        result = 6 - a - b;
     }
     
-
+    console.log(result)
+    
 }
