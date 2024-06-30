@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program in A",
+            "program": "${workspaceFolder}/A/code.js",
+            "cwd": "${workspaceFolder}/A",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program in B",
+            "program": "${workspaceFolder}/B/code.js",
+            "cwd": "${workspaceFolder}/B",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program in C",
+            "program": "${workspaceFolder}/C/code.js",
+            "cwd": "${workspaceFolder}/C",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        }
+    ]
+}
