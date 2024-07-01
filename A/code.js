@@ -1,42 +1,58 @@
-// const readline = require("readline");
-// const fs = require("fs");
-// const path = require("path");
+// const readline = require('readline');
+// const fs = require('fs');
+// const path = require('path');
 
 // const rl = readline.createInterface({
-//     input: fs.createReadStream(path.join(__dirname, "input0.txt")),
-//     output: process.stdout,
+//     input: fs.createReadStream(path.join(__dirname, 'input2.txt')),
+//     output: process.stdout
 // });
+
+
 
 // 本番用*************************************************************************
 const readline = require('readline');
 const rl = readline.createInterface({
-    input: process.stdin,
+    input: process.stdin, 
     output: process.stdout
-});
+}); 
 // 本番用*************************************************************************
 
+
+
 let lineCount = 0;
-let lines = [];
-rl.on("line", (line) => {
-    H = Number(line);
+let lines = []
+rl.on('line', (line) => {
+    if(lineCount === 0){
+        N = Number(line);
+    }else{
+        H = line.split(' ').map(Number);
+    }
+
 
     lineCount++;
-}).on("close", () => {
+}).on('close', () => {
     main();
 });
 
-function main() {
-    // console.log(H);
-
-    cropHeight = 0;
-    i = 0;
-
-    while (H >= cropHeight) {
-        cropHeight += Math.pow(2, i);
-        // console.log(i, cropHeight);
-
-        i++;
+function check(H) {
+    let max = H[0];
+    for (let i = 0; i < H.length; i++) {
+        let h = H[i];
+        // console.log(h, max);
+        if (h > max) {
+            return i+1;
+        }
     }
+    return -1;
+}
 
-    console.log(i);
+
+
+function main() {
+    // console.log(N,H)
+    result = check(H)
+    console.log(result)
+
+    
+
 }
