@@ -1,21 +1,33 @@
-const readline = require("readline");
-const fs = require("fs");
-const path = require("path");
+// // テスト用 ---------------------------------------------------------------------------------------------------
+// const readline = require("readline");
+// const fs = require("fs");
+// const path = require("path");
 
+// const file_number = 1;
+// const file = `input${file_number}.txt`;
+
+// const rl = readline.createInterface({
+//     input: fs.createReadStream(path.join(__dirname, file)),
+//     output: process.stdout,
+// });
+
+// // テスト用 ---------------------------------------------------------------------------------------------------
+
+// 本番用 ---------------------------------------------------------------------------------------------------
+const readline = require('readline');
 const rl = readline.createInterface({
-    input: fs.createReadStream(path.join(__dirname, "input2.txt")),
-    output: process.stdout,
+    input: process.stdin,
+    output: process.stdout
 });
+// 本番用 ---------------------------------------------------------------------------------------------------
 
-
-
-let lineCount = 0;
-let lines = [];
+lineCount = 0;
+lines = [];
 rl.on("line", (line) => {
     if (lineCount === 0) {
-        S = line.split("");
+        N = Number(line);
     } else {
-        T = line.split("");
+        lines.push(line);
     }
 
     lineCount++;
@@ -23,15 +35,21 @@ rl.on("line", (line) => {
     main();
 });
 
-function main() {
-    // console.log(S, T);
-    let startIndex = 0;
-    const indices = S.map(element => {
-      const index = T.indexOf(element, startIndex);
-      startIndex = index + 1;
-      return index;
-    });
 
-    const incrementedIndices = indices.map(element => element + 1)
-    console.log(incrementedIndices.join(" "));
+
+function main() {
+    // console.log(N,lines);
+
+
+    for(i=0;i<N;i++){
+        // console.log(lines[i],lines[i+N]);
+        if(lines[i] !== lines[i+N]){
+            let wrong_index = lines[i].split('').findIndex((char, j) => char !== lines[i + N][j]) + 1;
+            console.log(i+1," ",wrong_index)
+
+        }
+    }
+
+
+
 }
