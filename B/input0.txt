@@ -1,2 +1,7 @@
+3
 abc
-axbxyc
+def
+ghi
+abc
+bef
+ghi

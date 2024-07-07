@@ -1,41 +1,51 @@
+// // テスト用 ---------------------------------------------------------------------------------------------------
 // const readline = require("readline");
 // const fs = require("fs");
 // const path = require("path");
 
+// const file_number= 1
+// const file = `input${file_number}.txt`;
+
 // const rl = readline.createInterface({
-//     input: fs.createReadStream(path.join(__dirname, "input2.txt")),
+//     input: fs.createReadStream(path.join(__dirname, file)),
 //     output: process.stdout,
 // });
 
-// 本番用*************************************************************************
+// // テスト用 ---------------------------------------------------------------------------------------------------
+
+
+// 本番用 ---------------------------------------------------------------------------------------------------
 const readline = require('readline');
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
-// 本番用*************************************************************************
+// 本番用 ---------------------------------------------------------------------------------------------------
 
-let lineCount = 0;
-let lines = [];
+
+
+lineCount = 0;
+lines=[];
 rl.on("line", (line) => {
-    [N, X, Y, Z] = line.split(" ").map(Number);
+    if(lineCount === 0) {
+        A = line.split(" ").map(Number);
+    }else{
+        B= line.split(" ").map(Number);
+    }
+
+
 
     lineCount++;
 }).on("close", () => {
     main();
 });
 
-function contains(X,Y,Z) {
-    let start = Math.min(X,Y);
-    let end = Math.max(X,Y);
-    return start <= Z && Z <= end;
-}
+
 
 function main() {
-    // console.log(N,X,Y,Z)
-    if(contains(X,Y,Z)){
-        console.log("Yes")
-    }else{
-        console.log("No")
-    }
+    A_sum = A.reduce((a,b) => a+b);
+    B_sum = B.reduce((a,b) => a+b);
+
+    console.log((A_sum-B_sum)+1);
+
 }

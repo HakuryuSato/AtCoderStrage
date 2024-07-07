@@ -1,7 +1,17 @@
+// テスト用 ---------------------------------------------------------------------------------------------------
 const readline = require("readline");
 const fs = require("fs");
 const path = require("path");
-const { maxHeaderSize } = require("http");
+
+const file_number = 0;
+const file = `input${file_number}.txt`;
+
+const rl = readline.createInterface({
+    input: fs.createReadStream(path.join(__dirname, file)),
+    output: process.stdout,
+});
+
+// テスト用 ---------------------------------------------------------------------------------------------------
 
 // // 本番用 ---------------------------------------------------------------------------------------------------
 // const readline = require('readline');
@@ -11,65 +21,82 @@ const { maxHeaderSize } = require("http");
 // });
 // // 本番用 ---------------------------------------------------------------------------------------------------
 
-// テスト用 ---------------------------------------------------------------------------------------------------
-for (let i = 0; i <= 0; i++) { // ファイルでループ
-    const file = `input${i}.txt`;
-
-    const rl = readline.createInterface({
-        input: fs.createReadStream(path.join(__dirname, file)),
-        output: process.stdout,
-    });
-
-    let lineCount = 0;
-    lines = [];
-    rl.on("line", (line) => {
-        if (lineCount === 0) {
-            N = Number(line);
-        } else {
-            lines.push(line.split(" ").map(Number));
-        }
-
-        lineCount++;
-    }).on("close", () => {
-        main();
-    });
-}
-// テスト用 ---------------------------------------------------------------------------------------------------
-
-function main() {
-    // console.log(N)
-    // 最大の頭の値を取得
-    const maxHead = Math.max(...lines.map((gigant) => gigant[1]));
-
-    // 最大の頭の値を持つ行をフィルタリング
-    const maxHeadRows = lines.filter((gigant) => gigant[1] === maxHead);
-
-    // 全ての頭が同じか確認
-    const allHeadsSame = lines.every((gigant) => gigant[1] === lines[0][1]);
-
-    let result;
-
-    if (allHeadsSame) {
-        // 全ての頭が同じ場合、全ての行を足してからhead-shoulderした値を代入
-        const totalShoulder = lines.reduce((sum, gigant) => sum + gigant[0], 0);
-        const totalHead = lines.reduce((sum, gigant) => sum + gigant[1], 0);
-        result = totalHead - totalShoulder;
+lineCount = 0;
+lines = [];
+rl.on("line", (line) => {
+    if (lineCount === 0) {
+        N = Number(line);
     } else {
-        // 各gigantの肩の合計
-        const totalShoulder = lines.reduce((sum, gigant) => sum + gigant[0], 0);
-
-        // 最大の頭を持つgigantの肩の合計
-        const maxShoulder = maxHeadRows.reduce(
-            (sum, gigant) => sum + gigant[0],
-            0,
-        );
-
-        // 最大の頭を持つgigantのうち、最後のgigantの肩
-        const lastMaxShoulder = maxHeadRows[maxHeadRows.length - 1][0];
-
-        // 結果を計算
-        result = maxHead - (totalShoulder - maxShoulder + lastMaxShoulder);
+        num = line.split(" ").map(Number);
     }
 
-    console.log(result);
+    lineCount++;
+}).on("close", () => {
+    main();
+});
+
+function calcPow(exponents) {
+    return exponents.map((n) => Math.pow(2, n));
+}
+
+function calcLog(values) {
+    return values.map((n) => Math.log2(n));
+}
+
+function main() {
+    // console.log(N, num);
+    // num = num.map((n) => Math.pow(2, n));
+    // console.log(num);
+
+    ball_lines = [];
+
+    for (i = 0; i < N; i++) {
+        let ballSize = 2 ** num[i];
+        ball_lines.push(ballSize);
+        
+        if (num.length <= 1) { //1つ以下なら終了
+            break;
+        } else { // 2つ以上なら
+            const last_ball = ball_lines[ball_lines.length - 1];
+            const second_last_ball = ball_lines[ball_lines.length - 2];
+            console.log(last_ball, second_last_ball);
+
+            if (last_ball === second_last_ball) { //等しいならば
+                ball_lines.pop();
+                ball_lines.pop();
+                ball_lines.push(last_ball + second_last_ball);
+            } else { //異なるならば
+                console.log("異なる");
+                break;
+            }
+        }
+
+               
+    }
+
+    // numの場合  -------------------------------------------------
+
+    // console.log(ball_lines.reduce((a, b) => a + b));
+
+    // console.log(N, num);
+    // num = num.map((n) => Math.pow(2, n));
+    // console.log(num);
+
+    // for (let i = 0; i < N; i++) {
+    //     console.log(num)
+    //     if (num.length <= 1) break; //1つ以下なら終了
+
+    //     const last_ball = num[num.length - 1];
+    //     const second_last_ball = num[num.length - 2];
+    //     console.log(last_ball, second_last_ball);
+
+    //     if (last_ball === second_last_ball) {
+    //         num.pop();
+    //         num.pop();
+    //         num.push(last_ball + second_last_ball);
+    //     } else {
+    //         console.log("異なる");
+    //         break;
+    //     }
+    // }
 }

@@ -1,6 +1,17 @@
+// テスト用 ---------------------------------------------------------------------------------------------------
 const readline = require("readline");
 const fs = require("fs");
 const path = require("path");
+
+const file_number= 0
+const file = `input${file_number}.txt`;
+
+const rl = readline.createInterface({
+    input: fs.createReadStream(path.join(__dirname, file)),
+    output: process.stdout,
+});
+
+// テスト用 ---------------------------------------------------------------------------------------------------
 
 // // 本番用 ---------------------------------------------------------------------------------------------------
 // const readline = require('readline');
@@ -10,30 +21,21 @@ const path = require("path");
 // });
 // // 本番用 ---------------------------------------------------------------------------------------------------
 
-// テスト用 ---------------------------------------------------------------------------------------------------
-for (let i = 0; i <= 2; i++) {
-    const file = `input${i}.txt`;
-
-    const rl = readline.createInterface({
-        input: fs.createReadStream(path.join(__dirname, file)),
-        output: process.stdout,
-    });
-
-    lineCount = 0;
-    lines=[];
-    rl.on("line", (line) => {
-        lineCount++;
 
 
 
+lineCount = 0;
+lines=[];
+rl.on("line", (line) => {
 
 
 
-    }).on("close", () => {
-        main();
-    });
-}
-// テスト用 ---------------------------------------------------------------------------------------------------
+    lineCount++;
+}).on("close", () => {
+    main();
+});
+
+
 
 function main() {
 
