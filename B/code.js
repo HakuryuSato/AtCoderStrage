@@ -1,10 +1,9 @@
-// // テスト用 ---------------------------------------------------------------------------------------------------
+// テスト用 ---------------------------------------------------------------------------------------------------
 // const readline = require("readline");
 // const fs = require("fs");
 // const path = require("path");
-// const { count } = require("console");
 
-// const file_number = 2;
+// const file_number= 0
 // const file = `input${file_number}.txt`;
 
 // const rl = readline.createInterface({
@@ -12,52 +11,67 @@
 //     output: process.stdout,
 // });
 
-// // テスト用 ---------------------------------------------------------------------------------------------------
+// テスト用 ---------------------------------------------------------------------------------------------------
 
-// 本番用 ---------------------------------------------------------------------------------------------------
+// // 本番用 ---------------------------------------------------------------------------------------------------
 const readline = require('readline');
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
-// 本番用 ---------------------------------------------------------------------------------------------------
+// // 本番用 ---------------------------------------------------------------------------------------------------
+
+
+
 
 lineCount = 0;
-lines = [];
+lines=[];
 rl.on("line", (line) => {
-    if (lineCount === 0) {
-        [N, Q] = line.split(" ").map(Number);
-    } else {
-        lines = line.split(" ").map(Number);
-    }
+    S=line
+
+
 
     lineCount++;
 }).on("close", () => {
     main();
 });
 
-function main() {
-    let teeth = {};
-    for (let i = 1; i <= N; i++) {
-        teeth[i] = true;
+
+function countChar(text, char) {
+    return text.split(char).length - 1;
+}
+
+function checkOccurrences(obj) {
+    const counts = {};
+    for (let key in obj) {
+        counts[obj[key]] = (counts[obj[key]] || 0) + 1;
     }
 
-    // console.log(N, Q, lines);
-    lines.map((line) => {
-        const key = line.toString();
-        if (teeth.hasOwnProperty(key)) {
-            teeth[key] = !teeth[key];
+    for (let count of Object.values(counts)) {
+        if (count !== 0 && count !== 2) {
+            return false;
         }
-    });
+    }
+    return true;
+}
 
-    let count = 0;
+function main() {
+    // console.log(S)
+    wordList = new Set(...S.split(" "))
 
-    Object.values(teeth).map((value) => {
-        if (value) {
-            count++;
-        }
-    });
+    duplicationCount = 0
+    resultDict = {}
+    for (const word of wordList) {
+        resultDict[word] = countChar(S, word)        
+      }
 
-    // console.log(teeth);
-    console.log(count);
+    //   console.log(resultDict)
+    //   console.log(checkOccurrences(resultDict));
+
+      if(checkOccurrences(resultDict)) {
+        console.log("Yes")
+      } else {
+        console.log("No")
+      }
+
 }
