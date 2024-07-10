@@ -13,7 +13,6 @@
 
 // // テスト用 ---------------------------------------------------------------------------------------------------
 
-
 // 本番用 ---------------------------------------------------------------------------------------------------
 const readline = require('readline');
 const rl = readline.createInterface({
@@ -24,14 +23,11 @@ const rl = readline.createInterface({
 
 
 
+
 lineCount = 0;
 lines=[];
 rl.on("line", (line) => {
-    if(lineCount === 0) {
-        A = line.split(" ").map(Number);
-    }else{
-        B= line.split(" ").map(Number);
-    }
+    N=Number(line);
 
 
 
@@ -43,9 +39,16 @@ rl.on("line", (line) => {
 
 
 function main() {
-    A_sum = A.reduce((a,b) => a+b);
-    B_sum = B.reduce((a,b) => a+b);
+    // console.log(N)
+    result=[]
+    for(i=1;i<=N;i++){
+        if(i%3==0){
+            result.push("x")
+        }else{
+            result.push("o")
+        }
 
-    console.log((A_sum-B_sum)+1);
+    }
+    console.log(result.join(""))
 
 }
