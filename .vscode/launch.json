@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Launch Code.js",
+        "skipFiles": ["<node_internals>/**"],
+        "program": "${workspaceFolder}/${input:currentDirectory}/code.js",
+        "preLaunchTask": "getDirectory"
+      }
+    ],
+    "inputs": [
+      {
+        "id": "currentDirectory",
+        "type": "command",
+        "command": "extension.getCurrentDirectory"
+      }
+    ]
+  }
+  

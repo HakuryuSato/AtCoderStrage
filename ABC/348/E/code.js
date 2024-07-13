@@ -3,7 +3,7 @@ const readline = require("readline");
 const fs = require("fs");
 const path = require("path");
 
-const file_number= 1
+const file_number= 0
 const file = `input${file_number}.txt`;
 
 const rl = readline.createInterface({
