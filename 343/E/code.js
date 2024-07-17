@@ -38,5 +38,5 @@ rl.on("line", (line) => {
 
 
 function main() {
-
+    console.log("AAA")
 }
