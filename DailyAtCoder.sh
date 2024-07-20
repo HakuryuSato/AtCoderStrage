@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Main folder name input
 read -p "AtCoderABC番号を入力: " mainfolder
 
