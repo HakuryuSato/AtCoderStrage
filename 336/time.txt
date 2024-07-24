@@ -1,0 +1,1 @@
+AtCoderABC336(JS A:1分 B:28分 C:10分ギブ)
