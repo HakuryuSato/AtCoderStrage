@@ -1,14 +1,13 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch Code.js",
-      "skipFiles": ["<node_internals>/**"],
-      "program": "${file}",
-      "cwd": "${fileDirname}"
-    }
-  ]
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${fileDirname}"
+        }
+    ]
 }
