@@ -37,7 +37,7 @@ while true; do
   fi
 done
 
-output="AtCoderABC${mainfolder}(JS"
+output="AtCoderABC${mainfolder}(Py"
 for key in A B C D E F G H; do
   if [[ -n "${times[$key]}" ]]; then
     output+=" $key:${times[$key]}分"
