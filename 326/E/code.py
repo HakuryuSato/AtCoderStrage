@@ -8,7 +8,3 @@ sys.stdin = open(f'input{file_number}.txt', 'r')
 # sys.stdin = sys.__stdin__
 
 
-
-
-
-
