@@ -22,7 +22,5 @@ def check(S):
                 max_length = max(max_length, j - i + 1)
     return max_length
 
-
 S = input()
-
 print(check(S))
