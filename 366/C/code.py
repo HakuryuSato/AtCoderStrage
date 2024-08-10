@@ -5,24 +5,13 @@ import sys
 # sys.stdin = open(f'input{file_number}.txt', 'r')
 
 # # 本番用
-# sys.stdin = sys.__stdin__
+sys.stdin = sys.__stdin__
 
 Q = int(input())
 
 query=Q*[0]
 for i in range(Q):
     query[i]=list(map(int,input().split()))
-
-
-# sack = []
-# for q in query:
-#     if(q[0]==1):
-#         sack.append(q[1])
-#     elif(q[0]==2):
-#         sack.remove(q[1])
-#     else:
-#         print(len(set(sack)))
-
 
 sack = {}
 unique_count = 0
@@ -42,3 +31,4 @@ for q in query:
                 unique_count -= 1
     else:
         print(unique_count)
+
