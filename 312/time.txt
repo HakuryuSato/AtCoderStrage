@@ -1,0 +1,1 @@
+AtCoderABC312(Py A:1分 B:5分)
