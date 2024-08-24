@@ -1,0 +1,1 @@
+AtCoderABC368(Py A:4分 B:7分 C:23分ギブ D:10分ギブ)
