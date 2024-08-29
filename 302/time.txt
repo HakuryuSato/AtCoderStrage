@@ -1,0 +1,1 @@
+AtCoderABC302(Py A:3分 B:14分 C:20分)
