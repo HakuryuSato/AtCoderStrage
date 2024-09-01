@@ -11,8 +11,6 @@ N=int(input()) #4
 A=list(map(int,input().split())) #[3, 6, 9, 3]
 
 
-
-
 count = N  
 start = 0
 

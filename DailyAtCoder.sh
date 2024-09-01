@@ -1,5 +1,5 @@
 # Main folder name input
-read -p "AtCoderABC番号を入力: " mainfolder
+read -p "ディレクトリ名を入力: " mainfolder
 
 # Create the main directory
 mkdir -p "$mainfolder"
@@ -8,9 +8,22 @@ mkdir -p "$mainfolder"
 directories=("A" "B" "C" "D" "E")
 
 # Create each subdirectory inside the main folder and copy template contents
+# for dir in "${directories[@]}"; do
+#     mkdir -p "$mainfolder/$dir"
+#     cp -r ./template/* "$mainfolder/$dir/"
+# done
+
 for dir in "${directories[@]}"; do
+    # 各サブディレクトリを作成
     mkdir -p "$mainfolder/$dir"
-    cp -r ./template/* "$mainfolder/$dir/"
+    for file in ./template/*; do
+        # コピー先のファイルパスを設定
+        target_file="$mainfolder/$dir/$(basename "$file")"
+        # ファイルが存在しない場合のみコピー
+        if [ ! -e "$target_file" ]; then
+            cp "$file" "$target_file"
+        fi
+    done
 done
 
 # Declare associative array for storing times
