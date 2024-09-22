@@ -9,6 +9,3 @@ sys.stdin = sys.__stdin__
 
 S=input()
 print(S.replace('.',''))
-
-
-
