@@ -1,1 +1,1 @@
-AtCoderABC317(Py A:4分 B:7分 C:11分ギブ)
+AtCoderABC317(Py D:28分)
