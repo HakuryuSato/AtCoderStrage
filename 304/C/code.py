@@ -1,32 +1,44 @@
 import sys
+import math
 
 # ローカル用
-file_number = 1
-sys.stdin = open(f"input{file_number}.txt", "r")
+# file_number = 2
+# sys.stdin = open(f"input{file_number}.txt", "r")
 
 # # 本番用
-# sys.stdin = sys.__stdin__
+sys.stdin = sys.__stdin__
 
-
-def calc(point1, point2, D):
-    a, b = point1
-    c, d = point2
-    distance_squared = (a - b) ** 2 + (c - d) ** 2
-    return distance_squared <= D ** 2
-    
-
-# N人数,D範囲
 N, D = map(int, input().split())
-l = [0] * N
+positions = [tuple(map(int, input().split())) for _ in range(N)]
+infected = [False] * N
+infected[0] = True
+
+queue = [0]
+
+while queue:
+    current = queue.pop(0)
+    x1, y1 = positions[current]
+    
+    for i in range(N):
+        if not infected[i]:
+            x2, y2 = positions[i]
+            if math.dist((x1, y1), (x2, y2)) <= D:
+                infected[i] = True
+                queue.append(i)
 
 for i in range(N):
-    if(i==0):
-        infected = list(map(int, input().split()))
-        print('Yes')
-    else:
-        point = list(map(int, input().split()))
-        
+    print('Yes' if infected[i] else 'No')
 
 
 
+'''
+[問題文]
+N人の人が2次元平面上にいる
+人i=1が観戦した、距離がD以内にいる人にウイルスがうつる
+各iについて、ウイルスに感染しているかをYesまたはNoで出力せよ
 
+[私の考え]
+・標準libでユークリッド距離計算
+・BFS?
+
+'''
