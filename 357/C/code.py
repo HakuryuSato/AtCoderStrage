@@ -23,7 +23,6 @@ def generate_carpet(prev_carpet):
     
     return new_carpet
 
-
 carpet = ['#']
 for _ in range(N):
     carpet = generate_carpet(carpet)
