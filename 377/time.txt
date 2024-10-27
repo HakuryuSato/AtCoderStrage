@@ -1,1 +1,1 @@
-AtCoderABC377(Py A:3分 B:13分)
+AtCoderABC377(Py A:3分 B:13分 C:20)
