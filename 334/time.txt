@@ -1,1 +1,1 @@
-AtCoderABC334(JS A:2分 B:10分ギブ)
+AtCoderABC334(Py C:8分)
