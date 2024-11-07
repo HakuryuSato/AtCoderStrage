@@ -8,10 +8,10 @@ import sys
 sys.stdin = sys.__stdin__
 
 from collections import defaultdict
+
 S=input()
 N=len(S)
 ans=0
-
 count=defaultdict(int)
 
 for j in range(N):
