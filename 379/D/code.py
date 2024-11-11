@@ -1,7 +1,7 @@
 import sys
 
 # ローカル用
-file_number = 1
+file_number = 1 
 sys.stdin = open(f'input{file_number}.txt', 'r')
 
 # # 提出用
