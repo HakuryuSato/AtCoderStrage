@@ -1,38 +1,40 @@
 import sys
+from itertools import product
 
 # ローカル用
-file_number = 1 
-sys.stdin = open(f'input{file_number}.txt', 'r')
+# file_number = 3
+# sys.stdin = open(f'input{file_number}.txt', 'r')
 
 # # 本番用
-# sys.stdin = sys.__stdin__
+sys.stdin = sys.__stdin__
+
+
 
 N,X = map(int,input().split())
-l=[]
-
-for i in range(N):
-    l.append(list(map(int,input().split())))
-
-l
-
-
-sum_combinations = []
-
-# 全ての組み合わせを生成するループ
-for i in len(l[0]):
-    sum=0
-    for j in len(l):
-        sum += 
-
-        
+l=[(tuple(map(int,input().split()))) for _ in range(N)]
 
 
 
+dp = {0} 
 
-            
+for values in l:
+    next_dp = set()
+    for value in values:
+        for current_sum in dp:
+            if current_sum + value <= X:  
+                next_dp.add(current_sum + value)
+    dp = next_dp 
 
 
-if(X in sum_combinations):
-    print('Yes')
-else:
-    print('No')
+print("Yes" if X in dp else "No")
+
+
+
+
+
+# 全探索：実行時間超過
+
+
+# sums = [sum(comb) for comb in product(*l)]
+
+# print('Yes' if X in sums else 'No')
