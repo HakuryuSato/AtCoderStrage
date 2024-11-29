@@ -1,0 +1,1 @@
+AtCoderABC294(Py A:2分)
