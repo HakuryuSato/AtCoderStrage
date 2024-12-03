@@ -1,1 +1,1 @@
-AtCoderABC382(Py B:6分)
+AtCoderABC382(Py B:16分)
