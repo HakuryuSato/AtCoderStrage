@@ -1,8 +1,9 @@
 import sys
-from heapq import heappush, heappop
+from bisect import bisect_left
+import heapq
 
 # ローカル用
-file_number = 2
+file_number = 1
 sys.stdin = open(f"input{file_number}.txt", "r")
 
 # # 提出用
@@ -12,28 +13,29 @@ N, M = map(int, input().split())
 A = list(map(int, input().split()))
 B = list(map(int, input().split()))
 
-people = sorted((A[i], i + 1) for i in range(N))
-sushi = sorted((B[j], j) for j in range(M)) 
+people=sorted((A[i], i+1) for i in range(N))
+sushi=sorted((B[j], j+1) for j in range(M))
 
-result = [-1] * M
-available = []
-person_idx = 0
+res=[-1]*(M)
+heap=[]
+p=0
 
-for b, sushi_idx in sushi:
-    while person_idx < N and people[person_idx][0] <= b:
-        heappush(available, people[person_idx])
-        person_idx += 1
+for bj, sj in sushi:
+    # A_i ≤ bj となる人を全てヒープに追加
+    while p<N and people[p][0]<=bj:
+        # ヒープには人の番号(i)で管理(人番号が小さい順に取り出せるように)
+        heapq.heappush(heap, people[p][1])
+        p+=1
     
-    if available:
-        _, person_number = heappop(available)
-        result[sushi_idx] = person_number
+    if heap:
+        # 最も人番号が小さい人がこの寿司を取る
+        i=heap[0]  # ヒープから取り出さない(人は何度でも取れる)
+        res[sj-1]=i
+    else:
+        # 誰も取らない
+        res[sj-1]=-1
 
-print('\n'.join(map(str, result)))
-
-
-
-
-
+print("\n".join(map(str,res)))
 
 
 
@@ -41,13 +43,8 @@ print('\n'.join(map(str, result)))
 
 """
 [メモ]
-maxを作成してmax以下なら-1？
-ただそれだと10^10探索
-辞書を使う？
-二分探索は？->順番だから無理か？
-
-辞書にしたうえで昇順にソートしておけば？
-
+AまたはBのどちらかでループ？
+人のインデックスを保持したまま、美食度と対応した辞書か配列を作る
+二分探索か、
 
 """
-
