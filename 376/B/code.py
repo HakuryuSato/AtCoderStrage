@@ -21,6 +21,7 @@ n, q = map(int, input().split())
 left_position, right_position = 1, 2
 operation_count = 0
 
+#
 for _ in range(q):
     direction, target_position = input().split()
     target_position = int(target_position)
