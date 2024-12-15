@@ -31,5 +31,5 @@ if sum_stones != N:
     exit()
 
 # total stonesからsum indices?を引いた回数が操作回数
-total_stones = N * (N + 1) // 2
-print(total_stones - sum_indices)
+total_indices = N * (N + 1) // 2
+print(total_indices - sum_indices)
