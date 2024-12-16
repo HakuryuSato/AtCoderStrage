@@ -1,2 +1,2 @@
 AtCoderABC384(Py A:1分 B:5分 C:46分 D:42分ｷﾞﾌﾞ)
-AtCoderABC384(D:42)
+AtCoderABC384(D:60)
