@@ -1,34 +1,40 @@
 import sys
-from collections import defaultdict
 
 # ローカル用
 # file_number = 1
 # sys.stdin = open(f'input{file_number}.txt', 'r')
 
-# # 提出用
-sys.stdin = sys.__stdin__
+import sys
+data = sys.stdin.read().split()
+N = int(data[0])
+H = list(map(int, data[1:]))
 
-N=int(input())
-H=list(map(int,input().split()))
+# 答え (少なくとも1棟は飾れる)
+max_val = 1
 
-nums = defaultdict(set)
+# step(=K) を 1 から N まで
+for step in range(1, N + 1):
+    # offset(=r) を 0 から step-1 まで
+    for offset in range(step):
+        # 同じ高さがどれだけ続いているかをカウントする変数
+        count = 1
+        last_height = H[offset]
+        
+        # step ごとに進むループは while 文を使って range 呼び出しを避ける
+        i = offset + step
+        while i < N:
+            if H[i] == last_height:
+                count += 1
+            else:
+                # 今までの連続長を max_val と比較
+                if count > max_val:
+                    max_val = count
+                count = 1
+            last_height = H[i]
+            i += step
+        
+        # グループ末尾の連続長をチェック
+        if count > max_val:
+            max_val = count
 
-for i,h in enumerate(H):
-    nums[h].add(i)
-max_length = 1
-
-for indices in nums.values():
-    indices = sorted(indices)
-    for i in range(len(indices)):
-        for j in range(i + 1, len(indices)):
-            diff = indices[j] - indices[i]
-            length = 2
-            current = indices[j]
-
-            while current + diff in indices:
-                current += diff
-                length += 1
-
-            max_length = max(max_length, length)
-
-print(max_length)
+print(max_val)
