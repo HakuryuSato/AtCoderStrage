@@ -22,3 +22,5 @@ for i in range(M):
         day_in_month = target_day - (current_day_sum - D[i])
         print (i + 1, day_in_month)
         break
+
+
