@@ -18,7 +18,6 @@ dict = {
     "SW": "NE",
 }
 
-
 D=input()
 
 print(dict[D])
