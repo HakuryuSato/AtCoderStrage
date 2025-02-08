@@ -11,7 +11,7 @@ from itertools import accumulate
 sys.stdin = sys.__stdin__
 
 Q = int(input())
-l = deque()
+l = []
 idx = 0
 start = 0
 
