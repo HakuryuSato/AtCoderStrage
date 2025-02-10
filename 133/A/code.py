@@ -1,4 +1,5 @@
 import sys
+import numpy as np
 
 # ローカル用
 file_number = 1
