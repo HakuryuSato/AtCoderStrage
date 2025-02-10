@@ -18,11 +18,18 @@ def read_list():
 
 
 L, R = read_values()
-mod = 2019
-result = mod
 
+MOD = 2019
+R = min(R, L + MOD)
+
+result = MOD
 for i in range(L, R):
     for j in range(i + 1, R + 1):
-        result = min(result, (i * j) % mod)
+        result = min(result, (i * j) % MOD)
+        if result == 0:
+            print(0)
+            exit()
 
 print(result)
+
+
