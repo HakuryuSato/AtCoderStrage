@@ -24,7 +24,6 @@ A_counter = Counter(A)
 
 x, y = 0, 0
 
-
 for num, count in sorted(A_counter.items(), reverse=True):
     if count >= 4:
         if x == 0:
@@ -41,3 +40,4 @@ for num, count in sorted(A_counter.items(), reverse=True):
             break
 
 print(x * y)
+
