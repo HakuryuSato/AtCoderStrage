@@ -1,6 +1,4 @@
 import sys
-from collections import defaultdict
-
 
 # ローカル用
 # file_number = 1
@@ -8,6 +6,9 @@ from collections import defaultdict
 
 # # 本番用
 sys.stdin = sys.__stdin__
+
+
+from collections import defaultdict
 
 N = int(input())
 A = list(map(int, input().split()))
@@ -24,3 +25,4 @@ for weights in box_weights.values():
         move_box_weights += sum(weights[:-1])
 
 print(move_box_weights)
+
