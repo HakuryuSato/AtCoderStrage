@@ -4,3 +4,5 @@ def run_length_encoding(S):
         if S[i] == S[i-1]: c += 1
         else: r.append((S[i-1], c)); c = 1
     return r + [(S[-1], c)]
+
+directions = [(0,1),(1,0),(-1,0),(0,-1)]
