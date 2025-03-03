@@ -10,4 +10,4 @@ def run_length_encoding(S):
 
 
 # 4方向
-directions = [(0,1),(1,0),(-1,0),(0,-1)]
+directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
