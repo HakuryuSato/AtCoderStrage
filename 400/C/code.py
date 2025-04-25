@@ -10,4 +10,6 @@ sys.stdin = open(f'input{file_number}.txt', 'r')
 def read_values(): return map(int, input().split())
 def read_list(): return list(read_values())
 
+n=int(input())
+print(2**n * n**2)
 
